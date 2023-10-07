@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      .content {
+        width: 1024px;
+      }
+
+      .disp {
+        height: 200px;
+        border: 1px solid black;
+      }
+
+      .tab_host {
+        display: flex;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .tab:hover {
+        cursor: pointer;
+      }
+
+      .tab {
+        width: 200px;
+        border: 1px solid #ededed;
+      }
+
+      #list {
+        border: 1px solid #ededed;
+      }
+      .load {
+        transition: all 5s;
+        color: red;
+        font-size: 30px;
+      }
+      .on {
+        color: #ededed;
+        background-color: black;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        const open = document.getElementById("display");
+        open.classList.add("load");
+      };
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="disp" id="display">
+        <form>
+          <!-- 1.페이지가 로딩 될 때 이곳의 글씨를 변경하시오. -->
+          <p>1.페이지가 로딩 될 때 이곳의 글씨를 변경하시오.</p>
+        </form>
+      </div>
+
+      <p>2.탭을 선택하면 선택한 탭의 배경과 글자의색이 바뀌도록 하시오</p>
+      <!-- on을 주고 클리한것만 색둘다 변경나머지는 다시 돌아오게 -->
+      <div class="tab_host">
+        <div class="tab">탭1</div>
+        <div class="tab">탭2</div>
+        <div class="tab">탭3</div>
+        <div class="tab">탭4</div>
+        <div class="tab">탭5</div>
+      </div>
+
+      <p>
+        3. 위의 탭 클릭시 아래의 컨텐츠중 탭과 숫자가 같은 것만 보이게 하시오.
+        <!-- on을주고 클리한것만 보이고 나머지는 hidden 
+        =>  class block 을 다지워 , 같은 숫자 연결 ..문자열을 나누고 숫자를 찾아서 인식? innerHTML.includes:3조 도움 감사합니다 -->
+      </p>
+      <div class="tab_body">
+        <div class="block">탭1 컨텐츠</div>
+        <div class="block">탭3 컨텐츠</div>
+        <div class="block">탭2 컨텐츠</div>
+        <div class="block">탭5 컨텐츠</div>
+        <div class="block">탭4 컨텐츠</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const $Tab = document.querySelectorAll(".tab");
+    const $Tap_Block = document.querySelectorAll(".block");
+    $Tab.forEach((el) => {
+      el.addEventListener("click", (event) => {
+        const { target } = event;
+        $Tap_Block.forEach((el_block) => {
+          if (!el_block.innerHTML.includes(el.innerHTML)) {
+            el_block.style.visibility = "hidden"; //visibility="hidden"
+          } else el_block.style.display = "block"; //visibility="visible"
+        });
+
+        $Tab.forEach((el) => {
+          if (el.classList.contains("on")) {
+            el.classList.remove("on");
+          }
+        });
+        target.classList.add("on");
+      });
+    });
+  </script>
+</html>
