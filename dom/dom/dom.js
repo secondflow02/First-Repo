@@ -5,7 +5,7 @@ window.onload = function () {
 //
 // let tab_host = document.querySelector(".tab_host");
 // tab_host.onclick = function () {
-//   this.style.color = "red";
+//   this.style.color = "red"
 //   this.style.backgroundColor = "pink";
 // };
 //잘못풀었음...각각에 주어야하는데 전체에 배경색과글자색을줬음

@@ -5,7 +5,7 @@
 
 변수 b는 dom api selector로 다른 함수에서 재사용 될 수 있다 
 
-변수 c와 solution은 각각 main의 매개변수 및 콜백함수이다.
+변수 c와 solution은 각각 main의 매개변수 및 콜백함수이다..
 
 변수 c는 콜백함수 solution의 매게변수로 사용된다.
 
