@@ -13,16 +13,16 @@
 // 문제 해석은 각기 다를 수 있습니다. 중요한 것은 자신만의 관념으로 변수 위치를 찾는 것으로
 // 따로 답이 존재하지 않습니다.
 // */
-// const b = document.querySelectorAll("");
-// function solution(c) {
-//   const d += c;
-//   return e;
-// }
+const b = document.querySelectorAll("");
+function solution(c) {
+  const d += c;
+  return e;
+}
 
-// function parse() {}
+function parse() {}
 
-// function main() {
-//   let a;
-//   solution(c);
-//   return e;
-// }
+function main() {
+  let a;
+  solution(c);
+  return e;
+}

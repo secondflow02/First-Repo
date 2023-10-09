@@ -7,12 +7,12 @@
 //     ex) [1...80] => [[1...5], [6...10], [11...15], ... , [76...80]]
 // */
 
-// function division(number) {
-//   const arr3 = Array.from({ length: 80 }, (el, index) => index + 1);
-//   const newArray = [];
-//   for (let i = 0; i < arr3.length / 5; i++) {
-//     newArray.push(arr3.slice(i * 5, i * 5 + 5));
-//   }
-//   console.log(newArray);
-// }
-// division(80);
+function division(number) {
+  const arr3 = Array.from({ length: 80 }, (el, index) => index + 1);
+  const newArray = [];
+  for (let i = 0; i < arr3.length / 5; i++) {
+    newArray.push(arr3.slice(i * 5, i * 5 + 5));
+  }
+  console.log(newArray);
+}
+division(80);
