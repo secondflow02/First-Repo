@@ -15,7 +15,7 @@
 // */
 const b = document.querySelectorAll("");
 function solution(c) {
-  const d += c;
+  const e = d + c;
   return e;
 }
 
