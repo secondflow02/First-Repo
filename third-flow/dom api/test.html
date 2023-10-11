@@ -27,17 +27,12 @@
         width: 200px;
         border: 1px solid #ededed;
       }
-
-      #list {
-        border: 1px solid #ededed;
-      }
     </style>
   </head>
   <body>
       <p>
-        4. 아래의 입력창에 숫자가 입력되지 않도록 하고 길이 제한은 10자로 하시오. <br />
-        숫자가 입력된다면 숫자가 입력되었다고 alert로
-        알려주시오
+        4. 아래의 입력창에 숫자가 입력되지 않도록 하고 길이 제한은 10자로 하시오.<br/>
+        숫자가 입력된다면 숫자가 입력되었다고 alert로 알려주시오
       </p>
       <input type="text" id="te_input" maxlength="9" placeholder="글자만 입력하세요." />
       <p>
@@ -52,49 +47,76 @@
         <button type="reset">초기화</button>
         <p>리스트</p>
         <ul id="list">
-          <li class="liclass">list</li>
-          <li class="liclass">list</li>
+
         </ul>
       </form>
       <script>
-        //문제 4번
+        //문제 4번        
+        // $telInput.addEventListener("input",(e)=>{
+        // //   const isValid = regExp.test($telInput.value);
+        // //   if(isValid){
+        // //     alert('숫자가 입력 되었습니다 글자만 입력해주세요');
+        // //     // $telInput.value='';
+        // //   }else if ( $telInput.value.length > 8 ) {
+        // //     alert('글자 길이 제한은 10자 입니다');
+        // //   } else{
+        // //   }
+        // // });
+        
         const $telInput = document.getElementById('te_input');
         const regExp = /^[0-9]$/;
-        
-        $telInput.addEventListener("input",(e)=>{
-          const isValid = regExp.test($telInput.value);
-          if(isValid){
-            alert('숫자가 입력 되었습니다 글자만 입력해주세요');
-            $telInput.value='';
-          }else if ( $telInput.value.length > 8 ) {
-            alert('글자 길이 제한은 10자 입니다');
-          } else{
-          }
+        $telInput.addEventListener("keyup",(e)=>{
+            const keyName = e.key;
+            const isValid = regExp.test(keyName);
+            if(isValid){
+              alert('숫자가 입력 되었습니다 글자만 입력해주세요');
+            }else{
+            }
         });
       
       // 문제 5번
         const $listForm = document.getElementById("form");
         const $listData = document.getElementById("list_data");
-        const $list = document.getElementById("list")
-        const $listAll = document.querySelectorAll(".liclass"); 
-
+        const $list = document.getElementById("list");
+        const $listAll = document.querySelectorAll(".liclass");
+        
         function addList (event){
           const $newList = document.createElement("li");
+         
+          $editBtn.className = ``;
+          const $editBtn = document.createElement("button");
+          $editBtn.innerText = '수정';
+         
+          $deletBtn.className = `delet_btn`;
+          const $deletBtn = document.createElement("button");
+          $deletBtn.innerText = '삭제';
+         
           $newList.className = `liclass`
           const dataVal = $listData.value;
           $newList.innerText = dataVal;
+         
           $list.append($newList);
+          $list.appendChild($editBtn);
+          $list.append($deletBtn);
           event.preventDefault();
         }
 
         function resetList (event) {
-          // $listAll.innerText = ' ';
-          console.log($listAll);
-          event.preventDefault();
+          const $listAll = document.querySelectorAll(".liclass");
+          $listAll.forEach((el)=>{
+              el.textContent = '';
+              // el.innerHTML = "";
+          });
         }
 
         $listForm.addEventListener("submit",addList);
         $listForm.addEventListener("reset",resetList);
+
+        //문제 6번
+
+
+
+
 
       </script>
   </body>
