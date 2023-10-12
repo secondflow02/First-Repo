@@ -47,7 +47,6 @@
         <button type="reset">초기화</button>
         <p>리스트</p>
         <ul id="list">
-
         </ul>
       </form>
       <script>
@@ -80,24 +79,31 @@
         const $list = document.getElementById("list");
         const $listAll = document.querySelectorAll(".liclass");
         
+        function addbutton(event){
+          const $editBtn = document.createElement("button");
+          const $deletBtn = document.createElement("button");
+
+          $editBtn.className = `edit_btn`;
+          $editBtn.innerText = `수정`;
+          
+          $deletBtn.className = `delet_btn`;
+          $deletBtn.innerText = `삭제`; 
+          $newList.append($editBtn);
+          $newList.append($deletBtn);
+
+        }
+
+
+
         function addList (event){
           const $newList = document.createElement("li");
-         
-          $editBtn.className = ``;
-          const $editBtn = document.createElement("button");
-          $editBtn.innerText = '수정';
-         
-          $deletBtn.className = `delet_btn`;
-          const $deletBtn = document.createElement("button");
-          $deletBtn.innerText = '삭제';
-         
-          $newList.className = `liclass`
+
+
+          $newList.className = `liclass`;
           const dataVal = $listData.value;
           $newList.innerText = dataVal;
-         
+          addbutton();
           $list.append($newList);
-          $list.appendChild($editBtn);
-          $list.append($deletBtn);
           event.preventDefault();
         }
 
@@ -113,10 +119,12 @@
         $listForm.addEventListener("reset",resetList);
 
         //문제 6번
-
-
-
-
+        function editBtn(){
+            const newEditBtn = document.querySelectorAll('.edit_btn');
+            newEditBtn.forEach((el)=>{
+              console.log('dd');
+            });
+        }
 
       </script>
   </body>
