@@ -79,30 +79,25 @@
         const $list = document.getElementById("list");
         const $listAll = document.querySelectorAll(".liclass");
         
-        function addbutton(event){
+        const addbutton = (event) => {
           const $editBtn = document.createElement("button");
           const $deletBtn = document.createElement("button");
-
           $editBtn.className = `edit_btn`;
           $editBtn.innerText = `수정`;
-          
+          $editBtn.addEventListener("click",newEditBtn);
           $deletBtn.className = `delet_btn`;
-          $deletBtn.innerText = `삭제`; 
-          $newList.append($editBtn);
-          $newList.append($deletBtn);
-
+          $deletBtn.innerText = `삭제`;
+          $deletBtn.addEventListener("click",newDeletBtn);
+          event.append($editBtn);
+          event.append($deletBtn);
         }
-
-
 
         function addList (event){
           const $newList = document.createElement("li");
-
-
           $newList.className = `liclass`;
           const dataVal = $listData.value;
           $newList.innerText = dataVal;
-          addbutton();
+          addbutton($newList);
           $list.append($newList);
           event.preventDefault();
         }
@@ -119,12 +114,18 @@
         $listForm.addEventListener("reset",resetList);
 
         //문제 6번
-        function editBtn(){
-            const newEditBtn = document.querySelectorAll('.edit_btn');
-            newEditBtn.forEach((el)=>{
-              console.log('dd');
-            });
+        function newEditBtn (){
+          const $listAll = document.querySelectorAll(".liclass");
+          $updateInput.className = 'update_input';
+          const $updateInput = document.createElement('input');
+          const $compleBtn = document.createElement('button');
+          $compleBtn.setAttribute('ty')
+          $listAll.append($updateInput);
         }
+        function newDeletBtn(){
+          const newEditBtn = document.querySelectorAll('.liclass > .edit_btn');
+        }
+
 
       </script>
   </body>

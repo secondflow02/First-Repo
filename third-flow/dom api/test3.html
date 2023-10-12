@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      .content {
+        width: 1024px;
+      }
+
+      .disp {
+        height: 200px;
+        border: 1px solid black;
+      }
+
+      .tab_host {
+        display: flex;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .tab:hover {
+        cursor: pointer;
+      }
+
+      .tab {
+        width: 200px;
+        border: 1px solid #ededed;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      4. 아래의 입력창에 숫자가 입력되지 않도록 하고 길이 제한은 10자로 하시오.<br/>
+      숫자가 입력된다면 숫자가 입력되었다고 alert로 알려주시오
+    </p>
+    <input type="text" id="te_input" maxlength="10" placeholder="숫자만 입력하세요." />
+    <p>
+      5. 아래의 입력창에 입력 후 저장 버튼을 누르거나 <br/>
+      엔터키를 누르면 입력한 내용이 아래의 list에 추가 되도록 하시오. <br />
+      초기화 버튼을 누르면 list안의 모든 내용이 지워져야 함
+    </p>
+    <h4>6. 추가된 내용을 "각각" 수정 및 삭제할 수 있게 변경하시오.</h4>
+    <form id="form">
+      <input type="text" value="" width="600" id="list_data" name="content" />
+      <button type="button" id="send">저장</button>
+      <button type="button" id="reset">초기화</button>
+      <p>리스트</p>
+      <ul id="list">
+      </ul>
+    </form>
+    <script>
+      const $telInput = document.getElementById('te_input');
+      const $listData = document.getElementById("list_data");
+      const $list = document.getElementById("list");
+
+      // Regular expression to check if input contains only numbers
+      const regExp = /^[0-9]+$/;
+
+        $telInput.addEventListener("keyup",(e)=>{
+            const keyName = e.key;
+            const isValid = regExp.test(keyName);
+            if(isValid){
+                alert('숫자가 입력 되었습니다 글자만 입력해주세요');
+            }else{
+            }
+        });
+
+      const addListItem = () => {
+        const dataVal = $listData.value.trim();
+        if (dataVal === "") {
+          alert('내용을 입력하세요.');
+        } else {
+          const listItem = document.createElement("li");
+          listItem.innerText = dataVal;
+          $list.appendChild(listItem);
+
+          const editButton = document.createElement("button");
+          editButton.innerText = "수정";
+          editButton.addEventListener("click", ()=>editBtnFunc() );
+
+          function editBtnFunc(){
+            const newValue = prompt("수정할 내용을 입력하세요:");
+            if (newValue !== null) {
+                listItem.innerText = newValue;
+                const neweditButton = document.createElement("button");
+                neweditButton.innerText = "수정";
+                const newdeleteButton = document.createElement("button");
+                newdeleteButton.innerText = "삭제";
+                listItem.appendChild(neweditButton);
+            listItem.appendChild(newdeleteButton);
+                neweditButton.addEventListener("click", ()=>editBtnFunc());
+                newdeleteButton.addEventListener("click", () => {
+                    listItem.remove();
+                    });
+                }
+            } 
+          
+          const deleteButton = document.createElement("button");
+          deleteButton.innerText = "삭제";
+          deleteButton.addEventListener("click", () => {
+            listItem.remove();
+          });
+
+          listItem.appendChild(editButton);
+          listItem.appendChild(deleteButton);
+
+          $listData.value = "";
+        }
+      };
+
+      document.getElementById("send").addEventListener("click", addListItem);
+      document.getElementById("reset").addEventListener("click", () => {
+        $list.innerHTML = "";
+      });
+    </script>
+  </body>
+</html>
